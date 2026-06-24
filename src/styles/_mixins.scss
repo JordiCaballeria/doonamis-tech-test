@@ -1,0 +1,32 @@
+@use 'variables' as *;
+
+// Centrem el contingut amb max-width
+@mixin container {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+}
+
+// Media queries
+@mixin responsive($bp) {
+  @if $bp == md {
+    @media (max-width: $bp-md) { @content; }
+  } @else if $bp == lg {
+    @media (max-width: $bp-lg) { @content; }
+  }
+}
+
+// Grid de targetes
+@mixin card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: $spacing-lg;
+}
+
+// Truncar text en una línia
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
