@@ -42,4 +42,19 @@ export const tmdbService = {
     const data = await response.json();
     return TvShowDetail.fromApi(data);
   },
+
+  // Funcionalitat extra per a buscar sèries per nom
+  searchShows: async (query: string): Promise<TvShow[]> => {
+    const url = buildURL('/search/tv', { query });
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Error ${response.status} en buscar sèries`);
+    }
+
+    const data = await response.json();
+    return data.results.map((item: Record<string, unknown>) =>
+      TvShow.fromApi(item),
+    );
+  },
 };
