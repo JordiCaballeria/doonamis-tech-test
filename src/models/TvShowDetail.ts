@@ -1,6 +1,6 @@
 // Model per els detalls d'una serie
 export class TvShowDetail {
-    constructor(
+  constructor(
     public id: number,
     public name: string,
     public overview: string,
@@ -18,13 +18,13 @@ export class TvShowDetail {
   get posterUrl(): string {
     return this.poster_path
       ? `https://image.tmdb.org/t/p/w500${this.poster_path}`
-      : '/no-poster.png';
+      : "/no-poster.png";
   }
 
   get backdropUrl(): string {
     return this.backdrop_path
       ? `https://image.tmdb.org/t/p/original${this.backdrop_path}`
-      : '/no-backdrop.png';
+      : "/no-backdrop.png";
   }
 
   get rating(): string {
@@ -32,7 +32,7 @@ export class TvShowDetail {
   }
 
   get year(): string {
-    return this.first_air_date?.split('-')[0] ?? '-';
+    return this.first_air_date?.split("-")[0] ?? "-";
   }
 
   static fromApi(data: Record<string, unknown>): TvShowDetail {

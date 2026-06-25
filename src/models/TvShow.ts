@@ -11,8 +11,8 @@ export class TvShow {
     public genre_ids: number[],
   ) {}
 
-  //Construeix la URL del póster a partir del path que retorna la API
-  get posterURL(): string {
+  //Construim la URL del póster a partir del path que ens retorna la API
+  get posterUrl(): string {
     return this.poster_path
       ? `https://image.tmdb.org/t/p/w500${this.poster_path}`
       : "/no-poster.png";
@@ -27,7 +27,7 @@ export class TvShow {
     return this.first_air_date?.split("-")[0] ?? "-";
   }
 
-  // Mètode per construir una instància a partir de la resposta que ens retorna la API
+  // Mètode per construir una instància a partir de la resposta que ens torna la API
   static fromApi(data: Record<string, unknown>): TvShow {
     return new TvShow(
       data.id as number,

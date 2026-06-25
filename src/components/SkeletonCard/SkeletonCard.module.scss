@@ -1,0 +1,53 @@
+@use '../../styles/variables' as *;
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+
+// Mixin per aplicar l'efecte del skeleton als blocs que volguem
+@mixin skeleton-block {
+  background: linear-gradient(
+    90deg,
+    $color-bg-card 25%,
+    $color-border   50%,
+    $color-bg-card 75%
+  );
+  background-size: 400px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: $border-radius;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-bg-card;
+  border-radius: $border-radius;
+  overflow: hidden;
+}
+
+.poster {
+  @include skeleton-block;
+  aspect-ratio: 2 / 3;
+  width: 100%;
+  border-radius: 0;
+}
+
+.info {
+  padding: $spacing-sm $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.title {
+  @include skeleton-block;
+  height: 14px;
+  width: 80%;
+}
+
+.year {
+  @include skeleton-block;
+  height: 12px;
+  width: 40%;
+}

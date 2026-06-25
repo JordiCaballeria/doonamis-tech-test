@@ -1,0 +1,46 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: $color-bg;
+  border-bottom: 1px solid $color-border;
+  height: $header-height;
+}
+
+.container {
+  @include container;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: $font-size-xl;
+  font-weight: 700;
+  color: $color-accent;
+  letter-spacing: -0.5px;
+}
+
+.nav {
+  display: flex;
+  gap: $spacing-lg;
+}
+
+.navLink {
+  font-size: $font-size-sm;
+  font-weight: 500;
+  color: $color-text-muted;
+  transition: color $transition;
+
+  &:hover {
+    color: $color-text;
+  }
+
+  &.active {
+    color: $color-text;
+  }
+}

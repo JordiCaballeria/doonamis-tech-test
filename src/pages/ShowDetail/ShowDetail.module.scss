@@ -1,0 +1,115 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  position: relative;
+  flex: 1;
+  padding: $spacing-xl 0;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px) brightness(0.2);
+  z-index: -1;
+  transform: scale(1.1);
+}
+
+.container {
+  @include container;
+}
+
+.backButton {
+  background: none;
+  border: 1px solid $color-border;
+  color: $color-text;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius;
+  cursor: pointer;
+  margin-bottom: $spacing-xl;
+  transition: border-color $transition;
+
+  &:hover {
+    border-color: $color-text;
+  }
+}
+
+.content {
+  display: flex;
+  gap: $spacing-xl;
+
+  @include responsive(md) {
+    flex-direction: column;
+  }
+}
+
+.poster {
+  width: 300px;
+  flex-shrink: 0;
+  border-radius: $border-radius;
+
+  @include responsive(md) {
+    width: 200px;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: 700;
+}
+
+.tagline {
+  font-size: $font-size-lg;
+  color: $color-text-muted;
+  font-style: italic;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+  color: $color-text-muted;
+  font-size: $font-size-sm;
+}
+
+.rating {
+  color: $color-text;
+  font-weight: 600;
+}
+
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.genre {
+  border: 1px solid $color-border;
+  padding: $spacing-xs $spacing-md;
+  border-radius: $border-radius;
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+}
+
+.overview {
+  line-height: 1.8;
+  color: $color-text-muted;
+  max-width: 700px;
+}
+
+.message {
+  color: $color-text-muted;
+}
+
+.error {
+  color: $color-accent;
+  margin-bottom: $spacing-lg;
+}
