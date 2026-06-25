@@ -31,4 +31,4 @@ npm run dev
 
 ## Demo
 
-[github.com/JordiCaballeria/doonamis-tech-test](https://github.com/JordiCaballeria/doonamis-tech-test)
+https://jordicaballeria.github.io/doonamis-tech-test/
