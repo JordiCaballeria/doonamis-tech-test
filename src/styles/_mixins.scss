@@ -22,6 +22,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: $spacing-lg;
+
+  @include responsive(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 // Truncar text en una línia
