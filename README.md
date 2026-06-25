@@ -19,7 +19,9 @@ Aplicació web per explorar sèries de televisió populars utilitzant l'API de [
 ## Funcionalitats
 
 - Llistat de sèries populars amb skeleton loading
+- Buscador de sèries
 - Pàgina de detall per a cada sèrie
+- Sèries similars a la pàgina de detall
 - Disseny responsive
 
 ## Instal·lació
