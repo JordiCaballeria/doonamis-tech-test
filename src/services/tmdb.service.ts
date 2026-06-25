@@ -45,11 +45,26 @@ export const tmdbService = {
 
   // Funcionalitat extra per a buscar sèries per nom
   searchShows: async (query: string): Promise<TvShow[]> => {
-    const url = buildURL('/search/tv', { query });
+    const url = buildURL("/search/tv", { query });
     const response = await fetch(url);
 
     if (!response.ok) {
       throw new Error(`Error ${response.status} en buscar sèries`);
+    }
+
+    const data = await response.json();
+    return data.results.map((item: Record<string, unknown>) =>
+      TvShow.fromApi(item),
+    );
+  },
+
+  // Retornem sèries similars a la sèrie que cliquem
+  getSimilarShows: async (id: number): Promise<TvShow[]> => {
+    const url = buildURL(`/tv/${id}/similar`);
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Error ${response.status} en buscar sèries similars`);
     }
 
     const data = await response.json();

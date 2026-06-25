@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { tmdbService } from "../../services/tmdb.service";
 import useFetch from "../../hooks/useFetch";
+import ShowCard from "../../components/ShowCard/ShowCard";
 import styles from "./ShowDetail.module.scss";
 
 function ShowDetail() {
@@ -12,6 +13,11 @@ function ShowDetail() {
     loading,
     error,
   } = useFetch(() => tmdbService.getShowById(Number(id)));
+
+  const { data: similarShows } = useFetch(
+    () => tmdbService.getSimilarShows(Number(id)),
+    id,
+  );
 
   if (loading) {
     return (
@@ -38,7 +44,6 @@ function ShowDetail() {
 
   return (
     <div className={styles.page}>
-      {/* Imatge de fons */}
       <div
         className={styles.backdrop}
         style={{ backgroundImage: `url(${show.backdropUrl})` }}
@@ -76,6 +81,17 @@ function ShowDetail() {
             <p className={styles.overview}>{show.overview}</p>
           </div>
         </div>
+
+        {similarShows && similarShows.length > 0 && (
+          <div className={styles.similar}>
+            <h2 className={styles.similarTitle}>Sèries similars</h2>
+            <div className={styles.similarGrid}>
+              {similarShows.slice(0, 5).map((show) => (
+                <ShowCard key={show.id} show={show} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

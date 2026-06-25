@@ -113,3 +113,17 @@
   color: $color-accent;
   margin-bottom: $spacing-lg;
 }
+
+.similar {
+  margin-top: $spacing-xl;
+}
+
+.similarTitle {
+  font-size: $font-size-xl;
+  font-weight: 700;
+  margin-bottom: $spacing-lg;
+}
+
+.similarGrid {
+  @include card-grid;
+}
