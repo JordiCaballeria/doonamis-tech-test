@@ -15,7 +15,7 @@ export class TvShow {
   get posterUrl(): string {
     return this.poster_path
       ? `https://image.tmdb.org/t/p/w500${this.poster_path}`
-      : "/no-poster.png";
+      : `${import.meta.env.BASE_URL}no-poster.svg`;
   }
 
   //Arrodonim la nota a un decimal per a una millor estètica
